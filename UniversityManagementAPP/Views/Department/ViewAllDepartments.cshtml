@@ -1,0 +1,42 @@
+﻿@using UniversityManagementAPP.Models
+@model IEnumerable<UniversityManagementAPP.Models.Department>
+@{
+    ViewBag.Title = "ViewAll Departments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Department> departments = ViewBag.Departments;
+}
+@section styles
+{
+    <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet"/>
+}
+
+<table class="table table-bordered table-hover table-responsive table-striped" id="departmentTable" style="padding-top: 20";>
+    <thead>
+    <tr>
+        <th>Code</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody id="departmentTableTbody">
+        @foreach (var department in Model)
+        {
+            <tr>
+                <td>@department.Code</td>
+                <td>@department.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts
+{
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script>
+        var table = $("#departmentTable").DataTable();
+        $(document).ready(function() {
+            table.row.add([
+                value.Code,
+                value.Name,
+            ]).draw(false)
+        });
+    </script>
+}

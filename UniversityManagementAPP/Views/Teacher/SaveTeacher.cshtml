@@ -1,0 +1,55 @@
+﻿@model UniversityManagementAPP.Models.Teacher
+@{
+    ViewBag.Title = "SaveTeacher";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <fieldset>
+        <legend>Save Department</legend>
+        <table>
+            <tr>
+                <td>@Html.LabelFor(l => l.Name, new { @class = "col-sm-2 control-label" })</td>
+                <td>@Html.TextBoxFor(t => t.Name, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l => l.Adress, new { @class = "col-sm-2 control-label" })</td>
+                <td>@Html.TextAreaFor(t => t.Adress, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l => l.Email, new { @class = "col-sm-2 control-label" })</td>
+                <td>@Html.TextBoxFor(t => t.Email, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l => l.ContuctNo, new { @class = "col-sm-2 control-label" })</td>
+                <td>@Html.TextBoxFor(t => t.ContuctNo, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l => l.DesignationId, new { @class = "col-sm-2 control-label" })</td>
+                <td>@Html.DropDownListFor(d => d.DesignationId, new SelectList(ViewBag.Designations, "Value", "Text"), new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l => l.DepartmentId, new {@class = "col-sm-2 control-label"})</td>
+                <td>@Html.DropDownListFor(d => d.DepartmentId, new SelectList(ViewBag.Departments, "Value", "Text"), new {@class = "form-control"})</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l => l.Credit, new { @class = "col-sm-2 control-label" })</td>
+                <td>@Html.TextBoxFor(t => t.Credit, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Save" class="btn btn-default" style="float: right"></td>
+            </tr>
+        </table>
+        @{
+    if (ViewBag.message != null)
+    {
+        <div class="alert alert-success" role="alert" id="saveMessage">
+            <strong>@ViewBag.message .</strong>
+        </div>
+    }
+        }
+    </fieldset>
+}
+

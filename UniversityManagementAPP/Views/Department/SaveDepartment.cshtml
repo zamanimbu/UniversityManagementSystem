@@ -1,0 +1,45 @@
+﻿@model UniversityManagementAPP.Models.Department
+@{
+    ViewBag.Title = "SaveDepartment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <fieldset>
+        <legend>Save Department</legend>
+        <table>
+            <tr>
+                <td>@Html.LabelFor(l => l.Code, new { @class = "col-sm-2 control-label" })</td>
+                <td>@Html.TextBoxFor(t => t.Code, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l => l.Name, new { @class = "col-sm-2 control-label" })</td>
+                <td>@Html.TextBoxFor(t => t.Name, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Save" class="btn btn-default"></td>
+            </tr>
+        </table>
+        @{
+    if (ViewBag.message != null)
+    {
+        <div class="alert alert-success" role="alert" id="saveMessage">
+            <strong>@ViewBag.message .</strong>
+        </div>
+    }
+        }
+    </fieldset>
+}
+
+@section scripts
+{
+    
+}
+
+
+
+
